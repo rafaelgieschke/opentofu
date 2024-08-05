@@ -587,6 +587,9 @@ func (n *NodePlannableResourceInstance) importState(ctx EvalContext, addr addrs.
 		instanceRefreshState.Value = instanceRefreshState.Value.MarkWithPaths(merged)
 	}
 
+	n.generateConfigPath = "."
+	n.Config = nil
+
 	// If we're importing and generating config, generate it now.
 	if len(n.generateConfigPath) > 0 {
 		if n.Config != nil {
